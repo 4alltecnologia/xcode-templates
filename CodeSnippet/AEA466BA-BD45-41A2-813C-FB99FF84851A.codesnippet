@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>pdfkingfisher</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>struct PDFProcessor: ImageProcessor {
+    // `identifier` should be the same for processors with same properties/functionality
+    // It will be used when storing and retrieving the image to/from cache.
+    let identifier = "com.payly.4all"
+
+    // Convert input data/image to target image and return it.
+    func process(item: ImageProcessItem, options: KingfisherOptionsInfo) -&gt; Image? {
+        switch item {
+        case .image(let image):
+            return image
+        case .data(let data):
+            let pdfData = data as CFData
+            guard let provider:CGDataProvider = CGDataProvider(data: pdfData) else { return nil }
+            guard let pdfDoc:CGPDFDocument = CGPDFDocument(provider) else { return nil }
+            guard let pdfPage:CGPDFPage = pdfDoc.page(at: 1) else { return nil }
+            var pageRect:CGRect = pdfPage.getBoxRect(.mediaBox)
+            pageRect.size = CGSize(width:pageRect.size.width, height:pageRect.size.height)
+            UIGraphicsBeginImageContextWithOptions(pageRect.size, false, UIScreen.main.scale)
+            guard let context:CGContext = UIGraphicsGetCurrentContext()  else { return nil }
+            context.saveGState()
+            context.translateBy(x: 0.0, y: pageRect.size.height)
+            context.scaleBy(x: 1, y: -1)
+            context.concatenate(pdfPage.getDrawingTransform(.mediaBox, rect:  pageRect, rotate: 0, preserveAspectRatio: true))
+            context.drawPDFPage(pdfPage)
+            context.restoreGState()
+            let pdfImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return pdfImage
+        }
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>AEA466BA-BD45-41A2-813C-FB99FF84851A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Processor for download pdf as image in kingfisher library</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>PDF KingFisher processor</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

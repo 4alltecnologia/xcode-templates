@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>coordinator</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/// The Coordinator protocol
+public protocol Coordinator: AnyObject {
+    
+    /// The array containing any child Coordinators
+    var childCoordinators: [Coordinator] { get set }
+    
+    /// Start func
+    func start()
+}
+
+public extension Coordinator {
+    
+    /// Add a child coordinator to the parent
+    public func addChildCoordinator(_ childCoordinator: Coordinator) -&gt; Coordinator {
+        self.childCoordinators.append(childCoordinator)
+        return childCoordinator
+    }
+    
+    /// Remove a child coordinator from the parent
+    public func removeChildCoordinator(_ childCoordinator: Coordinator) -&gt; Coordinator {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
+        return childCoordinator
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>48484181-F4BA-4DA6-BB05-45A6E8772373</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Coordinator default protocols</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>CoordinatorProtocols</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>mirrorobject</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class MirrorObject {
+    let mirror: Mirror
+
+    init(reflecting: Any) {
+        self.mirror = Mirror(reflecting: reflecting)
+    }
+
+    func extract&lt;T&gt;(variableName: StaticString = #function) -&gt; T? {
+        return mirror.descendant("\(variableName)") as? T
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D3CB64C5-3D35-4771-B178-643585E35A92</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>A mirror object to unit testing</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Mirror Object</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

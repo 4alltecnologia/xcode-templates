@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>serviceprotocols</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>public enum APIMethod: String {
+    case options, get, head, post, put, patch, delete, trace, connect
+    
+    public func getAlamofireHttpMethod() -&gt; HTTPMethod {
+        switch self {
+        case .get:
+            return HTTPMethod.get
+
+        case .options:
+            return HTTPMethod.options
+
+        case .head:
+            return HTTPMethod.head
+
+        case .post:
+            return HTTPMethod.post
+
+        case .patch:
+            return HTTPMethod.patch
+
+        case .delete:
+            return HTTPMethod.delete
+
+        case .trace:
+            return HTTPMethod.trace
+
+        case .connect:
+            return HTTPMethod.connect
+
+        case .put:
+            return HTTPMethod.put
+        }
+    }
+}
+
+public enum APIEncoding: String {
+    case `default`
+    case url
+    
+    public func getAlamofireEnconding() -&gt; ParameterEncoding {
+        switch self {
+        case .url:
+            return URLEncoding.default
+
+        case .default:
+            return JSONEncoding.default
+        }
+    }
+}
+
+public protocol APIDelegateProtocol: AnyObject {
+    func requestWithObject&lt;T: Decodable&gt;(with config: RequestConfig, completion: @escaping (Result&lt;T&gt;) -&gt; Void)
+    func request(with config: RequestConfig, completion: @escaping (Result&lt;Data&gt;) -&gt; Void)
+}
+
+public struct RequestConfig {
+    var path: String
+    var method: APIMethod
+    var encoding: APIEncoding
+    var parameters: [String : Any]
+    var dateDecodeStrategy: JSONDecoder.DateDecodingStrategy?
+
+    public init(path: String,
+                method: APIMethod = .get,
+                encoding: APIEncoding = .default,
+                parameters: [String: Any] = [:],
+                dateDecodeStrategy: JSONDecoder.DateDecodingStrategy? = nil) {
+        self.path = path
+        self.method = method
+        self.encoding = encoding
+        self.parameters = parameters
+        self.dateDecodeStrategy = dateDecodeStrategy
+    }
+}
+
+protocol APIRoute {
+    var config: RequestConfig { get }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>523EDEDD-DA1A-4B41-A92E-139F19AF6608</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>all service and route protocols need to service layer</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Service Protocols</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

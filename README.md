@@ -1,2 +1,7 @@
-# xcode-templates
-Repository to store our Xcode templates
+To install the MVVM Xcode templates, run:
+
+> make install_templates
+
+To uninstall the MVVM Xcode templates, run:
+
+> make uninstall_templates
