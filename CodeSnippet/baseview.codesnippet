@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>baseview</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>TopLevel</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/// The BaseView
+open class BaseView: UIView {
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setup()
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setup()
+    }
+
+    required public init() {
+        super.init(frame: CGRect.zero)
+        self.setup()
+    }
+
+    /// Default implementation does nothing
+    open func initialize() { fatalError("Must be overridden") }
+
+    /// Default implementation does nothing
+    open func installConstraints() { fatalError("Must be overridden") }
+
+    // MARK: Private
+    fileprivate func setup() {
+        self.initialize()
+        self.installConstraints()
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>48484181-F4BA-4DA6-BB05-45A6E8772373</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetPlatformFamily</key>
+	<string>iphoneos</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>Contains the inteface elements of a screen or screen fragment</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>BaseView</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
