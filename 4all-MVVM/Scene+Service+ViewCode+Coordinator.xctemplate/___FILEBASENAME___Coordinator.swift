@@ -18,8 +18,8 @@ class ___FILEBASENAME___: Coordinator {
         self.navigationDelegate = navigationDelegate
     }
 
-    // MARK: - Functions
+    // MARK: Functions
     func start() {
-
+        <#Instantiate and present the initial scene for this flow here#>
     }
 }
