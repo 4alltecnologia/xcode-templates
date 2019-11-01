@@ -1,7 +1,7 @@
 XCODE_USER_TEMPLATES_DIR=~/Library/Developer/Xcode/Templates/File\ Templates
 XCODE_USER_SNIPPETS_DIR=~/Library/Developer/Xcode/UserData/CodeSnippets
 
-TEMPLATES_DIR=MVVM
+TEMPLATES_DIR=4all-MVVM
 CODE_SNIPPET_DIR=CodeSnippet
 
 install_templates:
@@ -13,3 +13,7 @@ install_templates:
 
 uninstall_templates:
 	rm -fR $(XCODE_USER_TEMPLATES_DIR)/$(TEMPLATES_DIR)
+
+reinstall_templates:
+	make uninstall_templates
+	make install_templates
