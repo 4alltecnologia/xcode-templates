@@ -11,7 +11,7 @@ protocol ___FILEBASENAME___Protocol: AnyObject {
 class ___FILEBASENAME___ {
     private weak var navigationDelegate: ___FILEBASENAME___NavigationDelegate?
 
-    init(navigationDelegate: ___FILEBASENAME___NavigationDelegate?) {
+    init(navigationDelegate: ___FILEBASENAME___NavigationDelegate? = nil) {
         self.navigationDelegate = navigationDelegate
     }
 }
